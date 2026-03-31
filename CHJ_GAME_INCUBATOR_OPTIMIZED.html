@@ -1,0 +1,3586 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>漕河泾游戏双孵化器 | 客户介绍文档</title>
+<!-- ===== Security Headers ===== -->
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob:; frame-ancestors 'none'; img-src 'self' data: blob:; object-src 'none';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+<style>  /* ============ Cyberpunk 2077 Global Styles ============ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cyber-yellow:   #FCE300;
+    --cyber-yellow-dim: #b8a500;
+    --cyber-red:      #FF003C;
+    --cyber-red-glow: #ff3355;
+    --cyber-cyan:     #00F0FF;
+    --cyber-cyan-dim: #00a8b3;
+    --cyber-blue:     #05F0FF;
+    --cyber-magenta:  #F20089;
+    --cyber-purple:   #BD00FF;
+    --cyber-dark:     #0a0a12;
+    --cyber-darker:   #050508;
+    --cyber-panel:    #0f0f1a;
+    --cyber-border:   rgba(252,227,0,0.15);
+    --cyber-glow:     rgba(252,227,0,0.4);
+    --cyber-text:     #e0e0e8;
+    --cyber-text-dim: #7878a0;
+    --cyber-bg-card:  rgba(15,15,30,0.85);
+    --cyber-bg-card-hover: rgba(20,20,45,0.95);
+    --radius:         2px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Segoe UI', 'Arial Black', -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--cyber-dark);
+    color: var(--cyber-text);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Cyberpunk scanline overlay on body */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ============ Cyberpunk Navigation ============ */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(5,5,8,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--cyber-yellow);
+    box-shadow: 0 2px 20px rgba(252,227,0,0.1), inset 0 -1px 0 rgba(252,227,0,0.3);
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  nav .logo {
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--cyber-yellow);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 0 0 10px rgba(252,227,0,0.5);
+  }
+  nav .logo span {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--cyber-yellow);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    box-shadow: 0 0 8px var(--cyber-yellow);
+  }
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+  }
+  nav ul a {
+    color: var(--cyber-text-dim);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color .2s, text-shadow .2s;
+    position: relative;
+  }
+  nav ul a:hover {
+    color: var(--cyber-yellow);
+    text-shadow: 0 0 8px rgba(252,227,0,0.4);
+  }
+  nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 50%; right: 50%;
+    height: 1px;
+    background: var(--cyber-yellow);
+    box-shadow: 0 0 6px var(--cyber-yellow);
+    transition: left .25s ease, right .25s ease;
+  }
+  nav ul a:hover::after {
+    left: 0; right: 0;
+  }
+
+  /* ============ Container ============ */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  section { padding: 100px 0 80px; }
+
+  /* ============ HERO - Cyberpunk 2077 ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  /* Cyberpunk grid background */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(252,227,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(252,227,0,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  /* Neon glow effect */
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 15%; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 500px;
+    background: 
+      radial-gradient(ellipse, rgba(252,227,0,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 30% 50%, rgba(255,0,60,0.06) 0%, transparent 40%),
+      radial-gradient(ellipse at 70% 50%, rgba(0,240,255,0.06) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .hero-inner { position: relative; z-index: 1; }
+
+  .hero-tag {
+    display: inline-block;
+    padding: 6px 20px;
+    border: 1px solid var(--cyber-yellow);
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    font-size: 11px;
+    color: var(--cyber-yellow);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    background: rgba(252,227,0,0.06);
+    text-shadow: 0 0 6px rgba(252,227,0,0.3);
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    background: linear-gradient(180deg, #ffffff 0%, var(--cyber-yellow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    filter: drop-shadow(0 0 20px rgba(252,227,0,0.15));
+  }
+
+  .hero h2 {
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 400;
+    color: var(--cyber-text-dim);
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat { text-align: center; }
+
+  .hero-stat .num {
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--cyber-yellow);
+    line-height: 1;
+    display: block;
+    font-style: normal;
+  }
+
+  .hero-stat .num em {
+    font-size: 16px;
+    font-style: normal;
+    color: var(--cyber-red);
+    text-transform: uppercase;
+  }
+
+  .hero-stat .label {
+    font-size: 12px;
+    color: var(--cyber-text-dim);
+    margin-top: 6px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ============ Section Headers ============ */
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-header .eyebrow {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cyber-red);
+    margin-bottom: 12px;
+    text-shadow: 0 0 8px rgba(255,0,60,0.3);
+  }
+
+  .section-header h2 {
+    font-size: clamp(26px, 3.5vw, 40px);
+    font-weight: 900;
+    color: var(--cyber-yellow);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 15px rgba(252,227,0,0.2);
+  }
+
+  .section-header p {
+    font-size: 15px;
+    color: var(--cyber-text-dim);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .divider {
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyber-yellow), var(--cyber-red), var(--cyber-cyan), transparent);
+    margin: 20px auto 0;
+    box-shadow: 0 0 8px rgba(252,227,0,0.3);
+  }
+
+  /* ============ Cyberpunk Cards ============ */
+  .card {
+    background: var(--cyber-bg-card);
+    border: 1px solid var(--cyber-border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: transform .25s, border-color .25s, box-shadow .25s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    position: relative;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--cyber-yellow), transparent);
+    opacity: 0;
+    transition: opacity .3s;
+  }
+  .card:hover {
+    transform: translateY(-8px);
+    border-color: var(--cyber-yellow);
+    box-shadow: 0 0 20px rgba(252,227,0,0.5), 0 0 40px rgba(252,227,0,0.2), 0 16px 48px rgba(0,0,0,.7);
+  }
+  .card:hover::before { opacity: 1; }
+
+  /* ============ Background Section ============ */
+  #background { 
+    background: var(--cyber-darker);
+    position: relative;
+  }
+  #background::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(252,227,0,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(255,0,60,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .bg-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    position: relative;
+  }
+
+  .bg-card .icon-wrap {
+    width: 48px; height: 48px;
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    margin-bottom: 18px;
+    border: 1px solid;
+  }
+  .bg-card .icon-wrap.blue  { background: rgba(0,240,255,0.08); border-color: rgba(0,240,255,0.3); }
+  .bg-card .icon-wrap.green { background: rgba(0,240,136,0.08); border-color: rgba(0,240,136,0.3); }
+  .bg-card .icon-wrap.gold  { background: rgba(252,227,0,0.08); border-color: rgba(252,227,0,0.3); }
+
+  .bg-card h3 {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--cyber-text);
+    letter-spacing: 1px;
+  }
+  .bg-card p {
+    font-size: 14px;
+    color: var(--cyber-text-dim);
+    line-height: 1.8;
+  }
+  .bg-card .highlight {
+    color: var(--cyber-yellow);
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(252,227,0,0.2);
+  }
+
+  /* ============ Incubator Cards ============ */
+  #incubators { 
+    background: var(--cyber-dark);
+    position: relative;
+  }
+  #incubators::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 30% 20%, rgba(189,0,255,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(0,240,255,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .incubator-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 800px) {
+    .incubator-pair { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+  }
+
+  .incu-card {
+    background: var(--cyber-bg-card);
+    border: 1px solid var(--cyber-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform .25s, box-shadow .25s;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  }
+
+  .incu-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(252,227,0,0.08), 0 16px 48px rgba(0,0,0,.6);
+  }
+
+  .incu-card.card-a { 
+    border-top: 2px solid var(--cyber-cyan); 
+    border-left: 1px solid rgba(0,240,255,0.2);
+  }
+  .incu-card.card-b { 
+    border-top: 2px solid var(--cyber-magenta); 
+    border-left: 1px solid rgba(242,0,137,0.2);
+  }
+
+  .incu-head {
+    padding: 32px 32px 24px;
+    position: relative;
+  }
+
+  .incu-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: var(--radius);
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  }
+  .badge-a { background: rgba(0,240,255,0.12); color: var(--cyber-cyan); border: 1px solid rgba(0,240,255,0.3); }
+  .badge-b { background: rgba(242,0,137,0.12); color: var(--cyber-magenta);  border: 1px solid rgba(242,0,137,0.3); }
+
+  .incu-head h3 {
+    font-size: 22px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .incu-head .sub {
+    font-size: 13px;
+    color: var(--cyber-text-dim);
+    margin-bottom: 20px;
+  }
+
+  .incu-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .meta-item {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.05);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+  }
+
+  .meta-item .key {
+    font-size: 10px;
+    color: var(--cyber-text-dim);
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .meta-item .val {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  .meta-item .val.cyan  { color: var(--cyber-cyan); text-shadow: 0 0 6px rgba(0,240,255,0.3); }
+  .meta-item .val.teal  { color: var(--cyber-magenta); text-shadow: 0 0 6px rgba(242,0,137,0.3); }
+  .meta-item .val.gold  { color: var(--cyber-yellow); text-shadow: 0 0 6px rgba(252,227,0,0.3); }
+
+  .incu-body {
+    padding: 0 32px 32px;
+    border-top: 1px solid rgba(252,227,0,0.1);
+    margin-top: 0;
+  }
+
+  .incu-body h4 {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cyber-yellow);
+    margin: 24px 0 14px;
+    text-shadow: 0 0 6px rgba(252,227,0,0.2);
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: var(--radius);
+    font-size: 12px;
+    background: rgba(252,227,0,0.04);
+    border: 1px solid rgba(252,227,0,0.15);
+    color: var(--cyber-text-dim);
+    transition: all .2s;
+    clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+  }
+  .tag:hover { 
+    background: rgba(252,227,0,0.1); 
+    color: var(--cyber-yellow); 
+    border-color: var(--cyber-yellow);
+    text-shadow: 0 0 4px rgba(252,227,0,0.3);
+  }
+  .tag.teal:hover { 
+    background: rgba(242,0,137,0.1); 
+    color: var(--cyber-magenta); 
+    border-color: var(--cyber-magenta);
+    text-shadow: 0 0 4px rgba(242,0,137,0.3);
+  }
+
+  .feature-list {
+    list-style: none;
+    margin-top: 0;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--cyber-text-dim);
+    border-bottom: 1px solid rgba(255,255,255,.03);
+  }
+  .feature-list li:last-child { border-bottom: none; }
+
+  /* 让 strong 标题单独一行，正文另起一行，避免在窄空间折行混乱 */
+  .feature-list li > strong:first-of-type {
+    display: block;
+    white-space: nowrap;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2px;
+  }
+  /* li 内文本节点包裹成 block 换行：用 flex-direction:column 处理 strong 后的文本 */
+  .feature-list li .li-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    gap: 3px;
+  }
+  .feature-list li .li-text strong {
+    display: block;
+    white-space: nowrap;
+    color: rgba(255,255,255,0.9);
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+
+  .feature-list li .dot {
+    flex-shrink: 0;
+    width: 6px; height: 6px;
+    margin-top: 8px;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+  .dot-cyan  { background: var(--cyber-cyan); box-shadow: 0 0 8px rgba(0,240,255,0.6); }
+  .dot-teal  { background: var(--cyber-magenta); box-shadow: 0 0 8px rgba(242,0,137,0.6); }
+
+  /* ============ Ecosystem ============ */
+  #ecosystem { 
+    background: var(--cyber-darker);
+    position: relative;
+  }
+  #ecosystem::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 50% 50%, rgba(252,227,0,0.02) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .eco-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .eco-card {
+    background: var(--cyber-bg-card);
+    border: 1px solid var(--cyber-border);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .eco-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--cyber-cyan);
+    box-shadow: 0 0 15px rgba(0,240,255,0.1);
+  }
+
+  .eco-card .eco-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .eco-card h4 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--cyber-text);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .eco-card p {
+    font-size: 12px;
+    color: var(--cyber-text-dim);
+    line-height: 1.7;
+  }
+
+  /* Brand tags */
+  .brand-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .brand-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: rgba(252,227,0,0.03);
+    border: 1px solid rgba(252,227,0,0.12);
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--cyber-text-dim);
+    transition: all .2s;
+    white-space: nowrap;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .brand-tag:hover {
+    background: rgba(252,227,0,0.08);
+    border-color: var(--cyber-yellow);
+    color: var(--cyber-yellow);
+    transform: translateY(-1px);
+    box-shadow: 0 0 12px rgba(252,227,0,0.15);
+    text-shadow: 0 0 4px rgba(252,227,0,0.3);
+  }
+
+  /* ============ Services ============ */
+  #services { 
+    background: var(--cyber-dark);
+    position: relative;
+  }
+  #services::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 70% 30%, rgba(189,0,255,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    position: relative;
+  }
+
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .incubator-pair { grid-template-columns: 1fr; }
+  }
+
+  .svc-card {
+    background: var(--cyber-bg-card);
+    border: 1px solid var(--cyber-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .svc-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--cyber-purple);
+    box-shadow: 0 0 15px rgba(189,0,255,0.1);
+  }
+
+  .svc-card .svc-icon {
+    width: 44px; height: 44px;
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 14px;
+    background: rgba(189,0,255,0.08);
+    border: 1px solid rgba(189,0,255,0.2);
+  }
+
+  .svc-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .svc-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .svc-card ul li {
+    font-size: 12px;
+    color: var(--cyber-text-dim);
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .svc-card ul li::before {
+    content: '//';
+    position: absolute;
+    left: 0;
+    color: var(--cyber-purple);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* Compute banner */
+  .compute-banner {
+    background: linear-gradient(135deg, rgba(252,227,0,0.04), rgba(189,0,255,0.04));
+    border: 1px solid rgba(252,227,0,0.15);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-top: 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    position: relative;
+  }
+  .compute-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--cyber-yellow), var(--cyber-purple), transparent);
+  }
+
+  .compute-banner .cb-icon { font-size: 36px; }
+
+  .compute-banner .cb-text h4 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .compute-banner .cb-text p {
+    font-size: 13px;
+    color: var(--cyber-text-dim);
+  }
+
+  .compute-stat {
+    margin-left: auto;
+    text-align: center;
+  }
+
+  .compute-stat .big {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--cyber-yellow);
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(252,227,0,0.3);
+  }
+
+  .compute-stat small {
+    display: block;
+    font-size: 11px;
+    color: var(--cyber-text-dim);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ============ Compare Table ============ */
+  #compare { 
+    background: var(--cyber-darker);
+    position: relative;
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .compare-table th, .compare-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid rgba(252,227,0,0.06);
+  }
+
+  .compare-table thead tr {
+    background: rgba(252,227,0,0.04);
+  }
+
+  .compare-table th {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--cyber-text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .compare-table th.col-a { color: var(--cyber-cyan); text-shadow: 0 0 6px rgba(0,240,255,0.3); }
+  .compare-table th.col-b { color: var(--cyber-magenta); text-shadow: 0 0 6px rgba(242,0,137,0.3); }
+
+  .compare-table tbody tr:nth-child(even) {
+    background: rgba(252,227,0,0.01);
+  }
+
+  .compare-table tbody tr:hover {
+    background: rgba(252,227,0,0.04);
+  }
+
+  .compare-table td.row-label {
+    font-weight: 700;
+    color: var(--cyber-text-dim);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .compare-table td.col-a-val { color: var(--cyber-cyan); font-weight: 600; }
+  .compare-table td.col-b-val { color: var(--cyber-magenta); font-weight: 600; }
+
+  /* ============ Mentors ============ */
+  #mentors { 
+    background: var(--cyber-dark);
+    position: relative;
+  }
+
+  .mentor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+
+  .mentor-card {
+    background: var(--cyber-bg-card);
+    border: 1px solid var(--cyber-border);
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    text-align: center;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .mentor-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--cyber-purple);
+    box-shadow: 0 0 15px rgba(189,0,255,0.1);
+  }
+
+  .mentor-avatar {
+    width: 52px; height: 52px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, var(--cyber-red), var(--cyber-purple));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
+    margin: 0 auto 12px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+
+  .mentor-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .mentor-card p {
+    font-size: 11px;
+    color: var(--cyber-text-dim);
+    line-height: 1.6;
+  }
+
+  /* ============ Events ============ */
+  #events { 
+    background: var(--cyber-darker);
+    position: relative;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .event-card {
+    background: var(--cyber-bg-card);
+    border: 1px solid var(--cyber-border);
+    border-radius: var(--radius);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .event-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyber-yellow), var(--cyber-red), var(--cyber-cyan));
+    box-shadow: 0 0 8px rgba(252,227,0,0.3);
+  }
+
+  .event-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--cyber-yellow);
+    box-shadow: 0 0 15px rgba(252,227,0,0.1);
+  }
+
+  .event-card .ev-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+
+  .event-card h4 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .event-card p {
+    font-size: 12px;
+    color: var(--cyber-text-dim);
+    line-height: 1.7;
+  }
+
+  /* ============ CTA ============ */
+  #cta {
+    background: linear-gradient(180deg, var(--cyber-darker) 0%, rgba(10,5,20,1) 100%);
+    text-align: center;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta::before {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 400px;
+    background: 
+      radial-gradient(ellipse, rgba(252,227,0,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 30% 50%, rgba(255,0,60,0.05) 0%, transparent 40%);
+  }
+
+  #cta h2 {
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 900;
+    color: var(--cyber-yellow);
+    margin-bottom: 16px;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px rgba(252,227,0,0.2);
+  }
+
+  #cta p {
+    font-size: 16px;
+    color: var(--cyber-text-dim);
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .cta-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .cta-contact-card {
+    background: rgba(252,227,0,0.03);
+    border: 1px solid rgba(252,227,0,0.12);
+    border-radius: var(--radius);
+    padding: 24px 36px;
+    min-width: 220px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .cta-contact-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--cyber-yellow);
+    box-shadow: 0 0 20px rgba(252,227,0,0.1);
+  }
+
+  .cta-contact-card .cc-label {
+    font-size: 10px;
+    color: var(--cyber-text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cta-contact-card .cc-name {
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  .cta-contact-card .cc-phone {
+    font-size: 16px;
+    color: var(--cyber-yellow);
+    font-weight: 700;
+    text-shadow: 0 0 6px rgba(252,227,0,0.3);
+  }
+
+  .cta-contact-card .cc-qrcode {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin: 16px auto 0;
+    border: 1px solid rgba(252,227,0,0.25);
+    border-radius: 2px;
+    background: #fff;
+    padding: 4px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .cta-contact-card .cc-qrcode:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(252,227,0,0.2);
+  }
+
+  /* ============ Footer ============ */
+  footer {
+    background: var(--cyber-darker);
+    border-top: 1px solid rgba(252,227,0,0.15);
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 11px;
+    color: var(--cyber-text-dim);
+    letter-spacing: 1px;
+  }
+
+  /* ============ Scroll Animation ============ */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform .6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Cyberpunk neon pulse */
+  @keyframes cyber-glow {
+    0%, 100% { text-shadow: 0 0 8px rgba(252,227,0,0.4), 0 0 2px rgba(252,227,0,0.6); }
+    50%       { text-shadow: 0 0 20px rgba(252,227,0,0.7), 0 0 4px rgba(252,227,0,0.9); }
+  }
+  .hero-stat .num { animation: cyber-glow 3s ease-in-out infinite; }
+
+  /* Cyberpunk flicker effect for hero tag */
+  @keyframes flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% { opacity: 1; }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% { opacity: 0.4; }
+  }
+  .hero-tag { animation: flicker 8s linear infinite; }
+
+  /* ============ Three Column Incubator ============ */
+  .three-col-incubator {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+    position: relative;
+  }
+
+  .three-col-incubator .incu-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .three-col-incubator .incu-body {
+    flex: 1;
+  }
+
+  /* Card C: AI+Game Accelerator (purple/red cyberpunk theme) */
+  .card-c {
+    border: 1px solid rgba(189,0,255,0.25);
+    background: linear-gradient(160deg, rgba(189,0,255,0.06) 0%, rgba(10,10,18,0.95) 100%);
+    border-left: 1px solid rgba(189,0,255,0.3);
+  }
+  .card-c .incu-head {
+    border-bottom: 1px solid rgba(189,0,255,0.12);
+    background: linear-gradient(135deg, rgba(189,0,255,0.08) 0%, transparent 100%);
+  }
+  .badge-c {
+    background: rgba(189,0,255,0.1);
+    border: 1px solid rgba(189,0,255,0.3);
+    color: var(--cyber-purple);
+  }
+  .card-c h3 { color: var(--cyber-purple); text-shadow: 0 0 8px rgba(189,0,255,0.2); }
+  .val.purple { color: var(--cyber-purple) !important; text-shadow: 0 0 6px rgba(189,0,255,0.3) !important; }
+  .dot-purple { background: var(--cyber-purple) !important; box-shadow: 0 0 8px rgba(189,0,255,0.6) !important; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important; border-radius: 0 !important; }
+  .tag.purple {
+    background: rgba(189,0,255,0.06);
+    border: 1px solid rgba(189,0,255,0.2);
+    color: var(--cyber-purple);
+  }
+  .tag.purple:hover {
+    background: rgba(189,0,255,0.12);
+    color: #d580ff;
+    text-shadow: 0 0 4px rgba(189,0,255,0.3);
+  }
+
+  @media (max-width: 1100px) {
+    .three-col-incubator {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .three-col-incubator {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ============ Cyberpunk 2077 Extra Visual Effects ============ */
+
+  /* Glitch text effect for section headers on hover */
+  @keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+  }
+
+  /* Hex pattern overlay for sections */
+  #incubators::after,
+  #services::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 L55 17.5 L55 42.5 L30 55 L5 42.5 L5 17.5 Z' fill='none' stroke='rgba(252,227,0,0.02)' stroke-width='0.5'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* Neon border animation for incubator cards */
+  @keyframes neon-border {
+    0%, 100% { border-color: rgba(252,227,0,0.15); }
+    50% { border-color: rgba(252,227,0,0.3); }
+  }
+
+  /* Data stream decoration for hero */
+  @keyframes data-stream {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100vh; }
+  }
+  /* ============ Nav: Transparent → Scrolled ============ */
+  nav {
+    transition: background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+    background: rgba(5,5,8,0.2);
+  }
+  nav.scrolled {
+    background: rgba(5,5,8,0.97) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    box-shadow: 0 2px 30px rgba(252,227,0,0.15), inset 0 -1px 0 rgba(252,227,0,0.35) !important;
+  }
+  /* Nav active link highlight */
+  nav ul a.active {
+    color: var(--cyber-yellow);
+    text-shadow: 0 0 8px rgba(252,227,0,0.5);
+  }
+  nav ul a.active::after { left: 0; right: 0; }
+
+  /* ============ Hamburger Button ============ */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    z-index: 200;
+    background: transparent;
+    border: none;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--cyber-yellow);
+    border-radius: 2px;
+    transition: transform .3s ease, opacity .3s ease, background .3s;
+    box-shadow: 0 0 4px rgba(252,227,0,0.6);
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ============ Mobile Sidebar ============ */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 150;
+    opacity: 0;
+    transition: opacity .3s ease;
+    backdrop-filter: blur(4px);
+  }
+  .nav-overlay.visible { opacity: 1; }
+  .nav-sidebar {
+    position: fixed;
+    top: 0; right: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgba(5,5,8,0.98);
+    border-left: 1px solid var(--cyber-yellow);
+    box-shadow: -8px 0 40px rgba(252,227,0,0.1);
+    z-index: 160;
+    transform: translateX(100%);
+    transition: transform .35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 80px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav-sidebar.open { transform: translateX(0); }
+  .nav-sidebar a {
+    display: block;
+    padding: 16px 0;
+    color: var(--cyber-text-dim);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(252,227,0,0.08);
+    transition: color .2s, padding-left .2s;
+  }
+  .nav-sidebar a:hover { color: var(--cyber-yellow); padding-left: 8px; }
+  .nav-sidebar a.active { color: var(--cyber-yellow); }
+
+  @media (max-width: 800px) {
+    .nav-hamburger { display: flex; }
+    nav ul { display: none !important; }
+  }
+
+  /* ============ Hero: Bounce scale for counter end ============ */
+  @keyframes numBounce {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.12); }
+    70%  { transform: scale(0.97); }
+    100% { transform: scale(1); }
+  }
+  .hero-stat .num.counted { animation: numBounce .45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+  /* ============ Parallax Container ============ */
+  .hero-parallax-bg {
+    position: absolute;
+    inset: -60px 0;
+    will-change: transform;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ============================================================
+     ⑩ 背景噪点纹理层 (body::before)
+     透明度0.03，不影响可读性，模拟CRT质感
+  ============================================================ */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.032;
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  /* ============================================================
+     ⑧ 自定义滚动条
+  ============================================================ */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--cyber-darker); }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(252,227,0,0.4);
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--cyber-yellow);
+    box-shadow: 0 0 8px var(--cyber-yellow), 0 0 16px rgba(252,227,0,0.4);
+  }
+
+  /* ① Hero 标题 Glitch 动效 — 已移除 */
+
+  /* ============================================================
+     ② Section Eyebrow 光扫动画
+  ============================================================ */
+  .section-header .eyebrow {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .section-header .eyebrow::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform: translateX(-160%);
+    animation: eyebrow-scan 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+  @keyframes eyebrow-scan {
+    0%    { transform: translateX(-160%); }
+    40%   { transform: translateX(280%); }
+    100%  { transform: translateX(280%); }
+  }
+
+  /* ============================================================
+     ③ 孵化器卡片顶部流光边框
+  ============================================================ */
+  @keyframes shimmer-cyan {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes shimmer-magenta {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  @keyframes shimmer-purple {
+    0%   { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .incu-card.card-a {
+    border-top: none !important;
+    position: relative;
+  }
+  .incu-card.card-a::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(0,240,255,0.3) 20%,
+      var(--cyber-cyan) 50%,
+      rgba(0,240,255,0.3) 80%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer-cyan 2.5s linear infinite;
+    box-shadow: 0 0 8px rgba(0,240,255,0.6), 0 0 20px rgba(0,240,255,0.2);
+  }
+
+  .incu-card.card-b {
+    border-top: none !important;
+    position: relative;
+  }
+  .incu-card.card-b::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(242,0,137,0.3) 20%,
+      var(--cyber-magenta) 50%,
+      rgba(242,0,137,0.3) 80%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer-magenta 2.8s linear infinite;
+    box-shadow: 0 0 8px rgba(242,0,137,0.6), 0 0 20px rgba(242,0,137,0.2);
+  }
+
+  .incu-card.card-c {
+    position: relative;
+  }
+  .incu-card.card-c::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(189,0,255,0.3) 20%,
+      var(--cyber-purple) 50%,
+      rgba(189,0,255,0.3) 80%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer-purple 3s linear infinite;
+    box-shadow: 0 0 8px rgba(189,0,255,0.6), 0 0 20px rgba(189,0,255,0.2);
+  }
+
+  /* ============================================================
+     ④ 服务卡片 svc-icon hover：scale + 发光
+  ============================================================ */
+  .svc-card .svc-icon {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+  }
+  .svc-card:hover .svc-icon {
+    transform: scale(1.25);
+    box-shadow: 0 0 20px rgba(189,0,255,0.5), 0 0 40px rgba(189,0,255,0.2);
+    border-color: rgba(189,0,255,0.5);
+  }
+
+  /* ============================================================
+     ⑦ Hero 统计数据 HUD 矩形框 + 四角 bracket 装饰
+  ============================================================ */
+  .hero-stat {
+    position: relative;
+    padding: 18px 24px;
+    background: rgba(252,227,0,0.03);
+    border: 1px solid rgba(252,227,0,0.1);
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .hero-stat:hover {
+    background: rgba(252,227,0,0.06);
+    border-color: rgba(252,227,0,0.25);
+  }
+  /* 四角 bracket 装饰 */
+  .hero-stat::before,
+  .hero-stat::after {
+    content: '';
+    position: absolute;
+    width: 8px; height: 8px;
+    pointer-events: none;
+    animation: none !important; /* 防止被 cyber-glow 等keyframe干扰 */
+    background: none !important;
+    -webkit-text-fill-color: unset !important;
+  }
+  .hero-stat::before {
+    top: -1px; left: -1px;
+    border-top: 2px solid var(--cyber-yellow);
+    border-left: 2px solid var(--cyber-yellow);
+    box-shadow: -2px -2px 6px rgba(252,227,0,0.3);
+  }
+  .hero-stat::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 2px solid var(--cyber-yellow);
+    border-right: 2px solid var(--cyber-yellow);
+    box-shadow: 2px 2px 6px rgba(252,227,0,0.3);
+  }
+  /* 另两角用 js-injected span 或靠 .hero-stats 伪元素辅助——此处用简洁方案：每个stat加额外角 */
+  .hero-stat .stat-corner-tr,
+  .hero-stat .stat-corner-bl {
+    position: absolute;
+    width: 8px; height: 8px;
+    pointer-events: none;
+  }
+  .hero-stat .stat-corner-tr {
+    top: -1px; right: -1px;
+    border-top: 2px solid rgba(252,227,0,0.5);
+    border-right: 2px solid rgba(252,227,0,0.5);
+  }
+  .hero-stat .stat-corner-bl {
+    bottom: -1px; left: -1px;
+    border-bottom: 2px solid rgba(252,227,0,0.5);
+    border-left: 2px solid rgba(252,227,0,0.5);
+  }
+
+  /* ============================================================
+     ⑨ CTA 联系卡片 shimmer 扫光
+  ============================================================ */
+  .cta-contact-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-contact-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(252,227,0,0.08),
+      rgba(252,227,0,0.12),
+      transparent
+    );
+    transform: translateX(-200%);
+    pointer-events: none;
+    animation: cta-shimmer 3s ease-in-out infinite;
+  }
+  .cta-contact-card:nth-child(2)::after {
+    animation-delay: 1.5s;
+  }
+  @keyframes cta-shimmer {
+    0%   { transform: translateX(-200%); }
+    50%  { transform: translateX(300%); }
+    100% { transform: translateX(300%); }
+  }
+
+  /* ============================================================
+     ⑤ 入驻流程时间轴升级样式
+  ============================================================ */
+  .process-section {
+    background: var(--cyber-darker);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .process-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(252,227,0,0.02) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 30%, rgba(0,240,255,0.02) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .process-timeline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    position: relative;
+    margin-top: 16px;
+  }
+
+  .process-step {
+    flex: 1;
+    min-width: 140px;
+    max-width: 200px;
+    text-align: center;
+    padding: 0 8px;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .process-step.lit {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* 节点圆圈 + pulse 光晕 */
+  .process-node {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--cyber-yellow);
+    background: rgba(252,227,0,0.06);
+    border: 2px solid rgba(252,227,0,0.3);
+    position: relative;
+    z-index: 2;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+    cursor: default;
+  }
+  .process-step.lit .process-node {
+    border-color: var(--cyber-yellow);
+    background: rgba(252,227,0,0.1);
+    box-shadow: 0 0 0 0 rgba(252,227,0,0.4);
+    animation: process-pulse 2s ease-out infinite;
+  }
+  @keyframes process-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(252,227,0,0.5); }
+    70%  { box-shadow: 0 0 0 14px rgba(252,227,0,0); }
+    100% { box-shadow: 0 0 0 0 rgba(252,227,0,0); }
+  }
+
+  /* 步骤内容 */
+  .process-step h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .process-step p {
+    font-size: 11px;
+    color: var(--cyber-text-dim);
+    line-height: 1.7;
+  }
+
+  /* 连接线容器 */
+  .process-connector {
+    flex: 0 0 48px;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 27px; /* 与节点圆中心对齐 */
+    position: relative;
+  }
+  .process-connector-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,
+      rgba(252,227,0,0.15),
+      rgba(0,240,255,0.4),
+      rgba(252,227,0,0.15)
+    );
+    position: relative;
+    overflow: hidden;
+  }
+  .process-connector-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(252,227,0,0.8), transparent);
+    animation: connector-flow 2s linear infinite;
+  }
+  @keyframes connector-flow {
+    0%   { left: -40%; }
+    100% { left: 140%; }
+  }
+
+  @media (max-width: 700px) {
+    .process-timeline {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .process-step { max-width: 260px; width: 100%; }
+    .process-connector {
+      flex: none;
+      padding-top: 0;
+      padding-left: 28px;
+      height: 40px;
+      width: 2px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .process-connector-line {
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg,
+        rgba(252,227,0,0.15),
+        rgba(0,240,255,0.4),
+        rgba(252,227,0,0.15)
+      );
+    }
+  }
+
+  /* ============================================================
+     ⑥ 活动卡片 SVG 图标样式
+  ============================================================ */
+  .ev-icon-svg {
+    display: block;
+    width: 32px; height: 32px;
+    margin-bottom: 12px;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), filter 0.3s;
+  }
+  .event-card:hover .ev-icon-svg {
+    transform: scale(1.15) rotate(8deg);
+    filter: drop-shadow(0 0 6px rgba(252,227,0,0.6));
+  }
+
+</style>
+<body class="">
+
+<!-- ========== 导航 ========== -->
+<nav id="main-nav">
+  <div class="logo" spellcheck="false">
+    <span></span>
+    漕河泾游戏孵化器
+  </div>
+  <ul id="nav-links">
+    <li spellcheck="false"><a href="#background">市场背景</a></li>
+    <li spellcheck="false"><a href="#incubators">双孵化器</a></li>
+    <li spellcheck="false"></li>
+    <li spellcheck="false"></li>
+    <li spellcheck="false"><a href="#ecosystem">产业生态</a></li>
+    <li spellcheck="false"><a href="#services">服务体系</a></li>
+    <li spellcheck="false"><a href="#compare">对比速览</a></li>
+    <li spellcheck="false"><a href="#cta">联系我们</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="菜单">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- 移动端侧边栏遮罩 -->
+<div class="nav-overlay" id="nav-overlay"></div>
+<!-- 移动端侧边栏 -->
+<div class="nav-sidebar" id="nav-sidebar">
+  <a href="#background" class="sidebar-link">市场背景</a>
+  <a href="#incubators" class="sidebar-link">双孵化器</a>
+  <a href="#ecosystem" class="sidebar-link">产业生态</a>
+  <a href="#services" class="sidebar-link">服务体系</a>
+  <a href="#compare" class="sidebar-link">对比速览</a>
+  <a href="#cta" class="sidebar-link">联系我们</a>
+</div>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <!-- 视差背景层（复制 hero 原有背景样式用于视差）-->
+  <div class="hero-parallax-bg" id="hero-parallax-bg"></div>
+  <!-- Canvas 粒子 -->
+  <canvas id="hero-particles" style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:0.6;"></canvas>
+  <div class="hero-inner" style="position:relative;z-index:2;">
+    <div class="hero-tag" spellcheck="false">漕河泾开发区 · 游戏产业</div>
+    <h1 spellcheck="false" data-text="两大游戏孵化器 共筑上海游戏高地">两大游戏孵化器<br>共筑上海游戏高地</h1>
+    <h2 spellcheck="false">光之希望 × 未来42·趣创 &nbsp;|&nbsp; 全链条 · 全周期 · 全生态</h2>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="stat-corner-tr"></span><span class="stat-corner-bl"></span>
+        <span class="num" spellcheck="false">60<em>+</em></span>
+        <div class="label" spellcheck="false">累计孵化初创企业</div>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-corner-tr"></span><span class="stat-corner-bl"></span>
+        <span class="num" spellcheck="false">40<em>年</em></span>
+        <div class="label" spellcheck="false">漕河泾科技园历史</div>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-corner-tr"></span><span class="stat-corner-bl"></span>
+        <span class="num" spellcheck="false">1558<em>亿</em></span>
+        <div class="label" spellcheck="false">2024上海网络游戏收入</div>
+      </div>
+      <div class="hero-stat">
+        <span class="stat-corner-tr"></span><span class="stat-corner-bl"></span>
+        <span class="num" spellcheck="false">2<em>万+</em></span>
+        <div class="label" spellcheck="false">宜山路核心游戏载体(㎡)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 市场背景 ========== -->
+<section id="background">
+  <div class="container">
+    <div class="section-header fade-in visible">
+      <div class="eyebrow" spellcheck="false">Why Now</div>
+      <h2 spellcheck="false">为什么是漕河泾？为什么是现在？</h2>
+      <p spellcheck="false">国家政策历史性突破 + 上海产业龙头集聚 + 漕河泾40年科创积淀，三大引擎共振</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="bg-cards fade-in visible">
+      <div class="card bg-card">
+        <div class="icon-wrap blue">📈</div>
+        <h3 spellcheck="false">上海游戏市场持续爆发</h3>
+        <p spellcheck="false">2024年上海网络游戏总销售收入达 <span class="highlight">1558亿元</span>，同比增长7.8%，<strong>连续13年保持正向增长</strong>。上海已成为全球最重要的游戏研发与发行中心之一。</p>
+      </div>
+
+      <div class="card bg-card">
+        <div class="icon-wrap gold">🏛️</div>
+        <h3 spellcheck="false">国家级政策历史性突破</h3>
+        <p spellcheck="false">2024年8月，国务院首次将"网络游戏"写入国家级文件。上海相继出台《促进服务消费提质扩容实施方案》，闵行区《关于加快推进数字文创产业的政策意见》蓄势待发，<span class="highlight">三级政策红利</span>同步释放。</p>
+      </div>
+
+      <div class="card bg-card">
+        <div class="icon-wrap green">🏆</div>
+        <h3 spellcheck="false">虹桥镇龙头企业聚集</h3>
+        <p spellcheck="false">辖区内数字文创企业 <span class="highlight">120余家</span>，以"上海四小龙"代表莉莉丝、沐瞳科技为引领。沐瞳斩获2024金狮奖，莉莉丝荣获"年度游戏十强"，大厂磁吸效应显著。</p>
+      </div>
+
+      <div class="card bg-card">
+        <div class="icon-wrap blue">🗺️</div>
+        <h3 spellcheck="false">漕河泾开发区40年积淀</h3>
+        <p spellcheck="false">1984年建区，开发管理面积 <span class="highlight">14.28平方公里</span>，438万平方米载体，横跨徐汇与闵行两区。已成为上海科技创新中心重要承载区，具备完整产学研配套体系。</p>
+      </div>
+
+      <div class="card bg-card">
+        <div class="icon-wrap green">🎮</div>
+        <h3 spellcheck="false">宜山路游戏产业带成型</h3>
+        <p spellcheck="false">依托漕河泾游戏产业生态，宜山路沿线已聚集米哈游、莉莉丝、鹰角网络、网易灵犀、FunPlus等 <span class="highlight">数十家头部游戏企业</span>，形成国内最密集的游戏研发街区之一。</p>
+      </div>
+
+      <div class="card bg-card">
+        <div class="icon-wrap gold">🤖</div>
+        <h3 spellcheck="false">AI+游戏融合赛道崛起</h3>
+        <p spellcheck="false">MiniMax、商汤科技、腾讯云、AWS等 AI 巨头已落地漕河泾。金闪闪基金（AI+游戏3亿）、元气资本等专项VC深度布局，<span class="highlight">AI赋能游戏研发</span>正在此发生。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 双孵化器 ========== -->
+<section id="incubators">
+  <div class="container">
+    <div class="section-header fade-in visible">
+      <div class="eyebrow" spellcheck="false">Two Incubators · One Accelerator</div>
+      <h2 spellcheck="false">漕河泾游戏双孵化器 &amp; 加速器</h2>
+      <p spellcheck="false">光之希望游戏聚集地 · 未来42·趣创 · AI+游戏加速器</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="three-col-incubator fade-in visible">
+
+      <!-- 孵化器A：光之希望游戏聚集地 -->
+      <div class="incu-card card-a">
+        <div class="incu-head">
+          <div class="incu-badge badge-a">孵化器 A · 徐汇宜山路</div>
+          <h3 spellcheck="false">光之希望游戏聚集地</h3>
+          <p class="sub" spellcheck="false">游戏孵化器 · 新研大厦</p>
+
+          <div class="incu-meta">
+            <div class="meta-item">
+              <div class="key" spellcheck="false">核心载体</div>
+              <div class="val cyan" spellcheck="false">新研大厦 B座</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">主要地址</div>
+              <div class="val" spellcheck="false">桂箐路65号</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">孵化面积</div>
+              <div class="val cyan" spellcheck="false">1,545㎡</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">交通</div>
+              <div class="val" spellcheck="false">9号线 + 12号线</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="incu-body">
+          <h4 spellcheck="false">空间载体</h4>
+          <ul class="feature-list">
+            <li spellcheck="false"><span class="dot dot-cyan"></span>新研大厦B座10F：约720㎡，开放工位区，适合初创小团队</li>
+            <li spellcheck="false"><span class="dot dot-cyan"></span>新研大厦B座15F：约825㎡，独立办公室为主，适合成长期团队</li>
+            <li spellcheck="false"><span class="dot dot-cyan"></span>步行3分钟至漕河泾开发区站（9号线&amp;12号线换乘）</li>
+          </ul>
+
+          <h4 spellcheck="false">六大配套资源</h4>
+          <ul class="feature-list">
+            <li spellcheck="false"><span class="dot dot-cyan"></span>紧邻米哈游、莉莉丝、鹰角网络等头部大厂，招才引流优势极强</li>
+            <li spellcheck="false"><span class="dot dot-cyan"></span>AWS游戏赋能中心、徐汇区游戏产业服务中心均在辐射范围内</li>
+            <li spellcheck="false"><span class="dot dot-cyan"></span>游戏博物馆、独立之光开发者平台等特色产业配套</li>
+            <li spellcheck="false"><span class="dot dot-cyan"></span>漕河泾开发区游戏产业联盟资源网络对接</li>
+            <li spellcheck="false"><span class="dot dot-cyan"></span>定期举办GameJam、路演、投融资对接活动</li>
+            <li spellcheck="false"><span class="dot dot-cyan"></span>专业游戏产业导师团队一对一辅导</li>
+          </ul>
+
+          <h4 spellcheck="false">已孵化亮点企业</h4>
+          <div class="tag-list">
+            <span class="tag" spellcheck="false">柚衣科技（米哈游系AI游戏）</span>
+            <span class="tag" spellcheck="false">破荒者（莉莉丝系）</span>
+            <span class="tag" spellcheck="false">龙白网络（字节系）</span>
+            <span class="tag" spellcheck="false">蛮啾网络</span>
+            <span class="tag" spellcheck="false">游卡网络</span>
+            <span class="tag" spellcheck="false">数数科技</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 孵化器B：未来42·趣创 -->
+      <div class="incu-card card-b">
+        <div class="incu-head">
+          <div class="incu-badge badge-b">孵化器 B · 闵行科技绿洲</div>
+          <h3 spellcheck="false">未来42 · 趣创</h3>
+          <p class="sub" spellcheck="false">闵行首个数字文创孵化空间 · 2024年12月正式启幕</p>
+
+          <div class="incu-meta">
+            <div class="meta-item">
+              <div class="key" spellcheck="false">建筑面积</div>
+              <div class="val teal" spellcheck="false">1,900㎡</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">地址</div>
+              <div class="val" spellcheck="false">合川路2570号1幢12F</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">工位数量</div>
+              <div class="val gold" spellcheck="false">128工位 + 8独立间</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">场地租金</div>
+              <div class="val teal" spellcheck="false">免费</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="incu-body">
+          <h4 spellcheck="false">空间特色</h4>
+          <ul class="feature-list">
+            <li spellcheck="false"><span class="dot dot-teal"></span>合川路地铁站上盖，交通极便利（12号线，步行即达）</li>
+            <li spellcheck="false"><span class="dot dot-teal"></span>科技绿洲三期，英国阿灵顿园区设计理念，人与自然融合，办公环境一流</li>
+            <li spellcheck="false"><span class="dot dot-teal"></span>3.5m层高、300kg/㎡布载、拎包入住，工位免费提供</li>
+            <li spellcheck="false"><span class="dot dot-teal"></span>周边配套：漕河泾万丽酒店（五星）、漕河泾印象城、A7会议中心、绿洲会所</li>
+          </ul>
+
+          <h4 spellcheck="false">入驻产业方向</h4>
+          <div class="tag-list">
+            <span class="tag teal" spellcheck="false">精品游戏研发</span>
+            <span class="tag teal" spellcheck="false">游戏上下游相关产品</span>
+            <span class="tag teal" spellcheck="false">动漫 &amp; 数字媒体</span>
+            <span class="tag teal" spellcheck="false">数字文创IP衍生</span>
+            <span class="tag teal" spellcheck="false">AIGC内容创作</span>
+            <span class="tag teal" spellcheck="false">游戏发行与出海</span>
+          </div>
+
+          <h4 spellcheck="false">核心定位</h4>
+          <ul class="feature-list">
+            <li spellcheck="false"><span class="dot dot-teal"></span>「精品游戏+产业外延」双轮驱动，闵行区首个专注于中小企业数字文创孵化空间</li>
+            <li spellcheck="false"><span class="dot dot-teal"></span>依托莉莉丝、沐瞳等龙头企业磁吸效应，打造开发者生态集聚区</li>
+            <li spellcheck="false"><span class="dot dot-teal"></span>面向初创游戏团队提供从创意到产品上线的全流程支持</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 加速器：AI+游戏加速器 -->
+      <div class="incu-card card-c">
+        <div class="incu-head">
+          <div class="incu-badge badge-c">加速器 · 超级场景聚合体</div>
+          <h3 spellcheck="false">漕河泾 AI + 游戏加速器</h3>
+          <p class="sub" spellcheck="false">孵化与加速双轮驱动 · 面向AI游戏及生态企业</p>
+
+          <div class="incu-meta">
+            <div class="meta-item">
+              <div class="key" spellcheck="false">核心载体</div>
+              <div class="val purple" spellcheck="false">新银大厦/科产大楼</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">孵化面积</div>
+              <div class="val" spellcheck="false">20,000㎡+</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">AI企业</div>
+              <div class="val purple" spellcheck="false">1,600+ 家</div>
+            </div>
+            <div class="meta-item">
+              <div class="key" spellcheck="false">空间选择</div>
+              <div class="val gold" spellcheck="false">50-500㎡ 灵活</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="incu-body">
+          <h4 spellcheck="false">孵化加速双轮驱动</h4>
+          <ul class="feature-list">
+            <li spellcheck="false"><span class="dot dot-purple"></span><span class="li-text"><strong>三大加速器</strong>新银大厦、科技产业化大楼、国际商务中心4楼—面向经过市场化验证的快速成长期游戏生态企业</span></li>
+            <li spellcheck="false"><span class="dot dot-purple"></span><span class="li-text"><strong>两大孵化器</strong>漕河泾诺惟核炬、漕河泾光之希望—面向拥有核心竞争力Demo的初创型游戏研发企业</span></li>
+            <li spellcheck="false"><span class="dot dot-purple"></span><span class="li-text"><strong>"科产-新银"双楼招引</strong>优质办公空间，企业拎包入驻，提供50-500㎡灵活空间选择</span></li>
+            <li spellcheck="false"><span class="dot dot-purple"></span><span class="li-text"><strong>AI+游戏开发者集聚区</strong>TOP 50全球IP中有10个国产游戏IP在漕河泾布局，上下游合作、IP合同等蕴含巨大潜力</span></li>
+          </ul>
+
+          <h4 spellcheck="false">三大企业成长计划</h4>
+          <div class="tag-list">
+            <span class="tag purple" spellcheck="false">加速器种子计划</span>
+            <span class="tag purple" spellcheck="false">孵化共生计划</span>
+            <span class="tag purple" spellcheck="false">可持续成长计划</span>
+          </div>
+
+          <h4 spellcheck="false">全周期无忧服务</h4>
+          <ul class="feature-list">
+            <li spellcheck="false"><span class="dot dot-purple"></span><span class="li-text"><strong>基石服务</strong>从落地到扎根的全周期护航，开办服务、政策适配、法律合规</span></li>
+            <li spellcheck="false"><span class="dot dot-purple"></span><span class="li-text"><strong>加速服务</strong>顶级导师团全程陪跑，投融资对接、产业生态资源、知识产权服务</span></li>
+            <li spellcheck="false"><span class="dot dot-purple"></span><span class="li-text"><strong>人才服务</strong>人才公寓供给、评优推进、人事管家、人才培育与招聘</span></li>
+            <li spellcheck="false"><span class="dot dot-purple"></span><span class="li-text"><strong>硬核租金减免</strong>首年租金免费，第二年租金5折，第三年租金8折（面积上限500㎡）</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section id="ecosystem">
+  <div class="container">
+    <div class="section-header fade-in visible">
+      <div class="eyebrow" spellcheck="false">Ecosystem</div>
+      <h2 spellcheck="false">宜山路游戏产业生态全图谱</h2>
+      <p spellcheck="false">投资 · 发行 · 工具 · 媒体 · 社群，六维资源闭环，入驻即接入整个游戏产业网络</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="eco-grid fade-in visible">
+      <div class="eco-card">
+        <span class="eco-icon">💰</span>
+        <h4 spellcheck="false">投资生态</h4>
+        <p spellcheck="false">金闪闪基金（AI+游戏3亿）、元气资本、诺惟资本（20亿）、索尼、鹰角投资部，全阶段资本覆盖。</p>
+      </div>
+
+      <div class="eco-card">
+        <span class="eco-icon">🚀</span>
+        <h4 spellcheck="false">发行出海</h4>
+        <p spellcheck="false">Gamirror Games（Steam全球）、悠星（日韩）、智多鱼（东南亚）、沐瞳（东南亚）、椰岛（台港日）。</p>
+      </div>
+
+      <div class="eco-card">
+        <span class="eco-icon">🛠️</span>
+        <h4 spellcheck="false">技术工具</h4>
+        <p spellcheck="false">Unity中国（游戏引擎）、MiniMax（AI赋能）、点睛（美术外包）、数数科技（数据分析）、腾讯云/AWS/谷歌云（算力）。</p>
+      </div>
+
+      <div class="eco-card">
+        <span class="eco-icon">🎯</span>
+        <h4 spellcheck="false">IP变现</h4>
+        <p spellcheck="false">珀乐科技（AIGC-IP动画）、真有趣（IP卡牌）、52TOYS（对标泡泡玛特）、吉考斯工业（游戏IP周边）、角研社（IP社群）。</p>
+      </div>
+
+      <div class="eco-card">
+        <span class="eco-icon">📣</span>
+        <h4 spellcheck="false">媒体宣传</h4>
+        <p spellcheck="false">游研社（ToC）、游戏葡萄（垂类社媒）、机核（硬核玩家+开发者）、游戏茶馆（B端企业社群）。</p>
+      </div>
+
+      <div class="eco-card">
+        <span class="eco-icon">🏅</span>
+        <h4 spellcheck="false">赛事活动</h4>
+        <p spellcheck="false">游戏产业年会、金茶奖、GGAC全国美术大会、Unity开发者大赛、CiGA大学生游戏创作大赛、48小时GameJam。</p>
+      </div>
+    </div>
+
+    <!-- 龙头企业 -->
+    <div class="fade-in visible" style="margin-top: 48px;">
+      <div class="section-header" style="margin-bottom: 28px; text-align: left;">
+        <div class="eyebrow" spellcheck="false">头部企业生态圈</div>
+        <h2 style="font-size: 22px;" spellcheck="false">入驻周边的知名企业（部分）</h2>
+      </div>
+                        <div class="brand-grid" id="brand-grid-list">
+        <span class="brand-tag" spellcheck="false">
+          
+          米哈游
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          莉莉丝
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          鹰角网络
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          沐瞳科技
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          网易互娱
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          FunPlus
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          腾讯游戏
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          字节跳动</span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          快手游戏
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          Garena
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          世纪天成
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          游族网络
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          MiniMax
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          商汤科技
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          点点互动</span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          淘米游戏
+        </span>
+        <span class="brand-tag" spellcheck="false">
+          
+          
+          奇安信
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 服务体系 ========== -->
+<section id="services">
+  <div class="container">
+    <div class="section-header fade-in visible">
+      <div class="eyebrow" spellcheck="false">Services 6+1</div>
+      <h2 spellcheck="false">游戏开发者生态服务体系</h2>
+      <p spellcheck="false">六大服务包 + 一项专项服务，覆盖初创团队从注册到出海的全生命周期需求</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="services-grid fade-in visible">
+      <div class="svc-card">
+        <div class="svc-icon">🏢</div>
+        <h4 spellcheck="false">无忧创业服务包</h4>
+        <ul>
+          <li spellcheck="false">租金硬核减免（免费工位）</li>
+          <li spellcheck="false">场地免费使用</li>
+          <li spellcheck="false">工商注册一站式</li>
+          <li spellcheck="false">财税服务</li>
+          <li spellcheck="false">法律及知识产权服务</li>
+          <li spellcheck="false">创业能力培训</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">👥</div>
+        <h4 spellcheck="false">人才增值服务包</h4>
+        <ul>
+          <li spellcheck="false">打通产教研链条</li>
+          <li spellcheck="false">专业培训与人才引进</li>
+          <li spellcheck="false">企业人才招聘对接</li>
+          <li spellcheck="false">薪酬架构咨询</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <h4 spellcheck="false">政策适配服务包</h4>
+        <ul>
+          <li spellcheck="false">一对一企业政策顾问</li>
+          <li spellcheck="false">协助申报政策性补贴</li>
+          <li spellcheck="false">AI、游戏产业政策咨询</li>
+          <li spellcheck="false">科技政策咨询</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">💼</div>
+        <h4 spellcheck="false">投融资服务包</h4>
+        <ul>
+          <li spellcheck="false">投融资对接（VC/天使轮）</li>
+          <li spellcheck="false">科技金融服务</li>
+          <li spellcheck="false">创业担保贷款</li>
+          <li spellcheck="false">商业贷款对接</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">⚡</div>
+        <h4 spellcheck="false">技术赋能服务包</h4>
+        <ul>
+          <li spellcheck="false">AI基础大模型 1-10亿Token</li>
+          <li spellcheck="false">海螺AI视频生成 500-5000条</li>
+          <li spellcheck="false">程序开发专业培训</li>
+          <li spellcheck="false">数字美术设计制作课程</li>
+          <li spellcheck="false">产品测试评估</li>
+        </ul>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <h4 spellcheck="false">产业生态服务包</h4>
+        <ul>
+          <li spellcheck="false">产业资源对接</li>
+          <li spellcheck="false">联动赛事举办</li>
+          <li spellcheck="false">企业沙龙分享</li>
+          <li spellcheck="false">媒体宣传支持</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 算力亮点 -->
+    <div class="compute-banner fade-in visible">
+      <div class="cb-icon">🖥️</div>
+      <div class="cb-text">
+        <h4 spellcheck="false">AI算力专项支持</h4>
+        <p spellcheck="false">依托腾讯云、阿里云、AWS、华为昇思等算力平台，为游戏AI开发团队提供大规模算力支持</p>
+      </div>
+      <div class="compute-stat">
+        <div class="big" spellcheck="false">10亿</div>
+        <small>Token额度上限</small>
+      </div>
+      <div class="compute-stat">
+        <div class="big" spellcheck="false">5000条</div>
+        <small>AI视频生成额度</small>
+      </div>
+    </div>
+
+    <!-- 专项服务 -->
+    <div class="fade-in visible" style="margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div class="card">
+        <h4 style="color: var(--brand-cyan); margin-bottom: 12px; font-size: 15px;" spellcheck="false">🌏 出海专项服务</h4>
+        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.8;" spellcheck="false">本地化适配、国际平台快速通道、海外团队合作对接。联动悠星、智多鱼、沐瞳等出海渠道，助力游戏产品快速进入东南亚、日韩及欧美市场。</p>
+      </div>
+      <div class="card">
+        <h4 style="color: var(--brand-teal); margin-bottom: 12px; font-size: 15px;" spellcheck="false">🎯 运营专项服务</h4>
+        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.8;" spellcheck="false">产品落地策略、运营方案定制、IP开发定制。从产品设计到上线运营，提供专业的运营咨询与执行支持。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 对比速览 ========== -->
+<section id="compare">
+  <div class="container">
+    <div class="section-header fade-in visible">
+      <div class="eyebrow" spellcheck="false">Side by Side</div>
+      <h2 spellcheck="false">两大孵化器对比速览</h2>
+      <p spellcheck="false">根据团队阶段与需求选择最适合的入驻空间</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="fade-in visible" style="overflow-x: auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width: 20%;" spellcheck="false">维度</th>
+            <th class="col-a" spellcheck="false">漕河泾光之希望</th>
+            <th class="col-b" spellcheck="false">未来42 · 趣创</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label" spellcheck="false">所在区域</td>
+            <td class="col-a-val" spellcheck="false">徐汇区 · 宜山路</td>
+            <td class="col-b-val" spellcheck="false">闵行区 · 科技绿洲</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">地址</td>
+            <td class="col-a-val" spellcheck="false">桂箐路65号B座15F</td>
+            <td class="col-b-val" spellcheck="false">合川路2570号1幢12F</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">交通</td>
+            <td class="col-a-val" spellcheck="false">9号线漕河泾开发区站（步行4-5分钟）</td>
+            <td class="col-b-val" spellcheck="false">12号线合川路（地铁上盖，步行即达）</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">载体规模</td>
+            <td class="col-a-val" spellcheck="false">约1500㎡</td>
+            <td class="col-b-val" spellcheck="false">约1900㎡（128工位 + 8独立间）</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">租金</td>
+            <td class="col-a-val" spellcheck="false">工位免费</td>
+            <td class="col-b-val" spellcheck="false">工位免费</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">适合对象</td>
+            <td class="col-a-val" spellcheck="false">成长期游戏团队，独立空间需求</td>
+            <td class="col-b-val" spellcheck="false">初创游戏团队，联合办公灵活入驻</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">产业定位</td>
+            <td class="col-a-val" spellcheck="false">游戏 + AIGC + 元宇宙，孵化器+加速器双轨</td>
+            <td class="col-b-val" spellcheck="false">精品游戏 + 数字文创，"双轮驱动"</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">核心优势</td>
+            <td class="col-a-val" spellcheck="false">周边大厂密度最高，产业生态最成熟</td>
+            <td class="col-b-val" spellcheck="false">环境最优，政策最新，门槛最低</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">已孵化企业</td>
+            <td class="col-a-val" spellcheck="false">累计8家（字节、莉莉丝、米哈游系创业者）</td>
+            <td class="col-b-val" spellcheck="false">累计17+家</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">特色配套</td>
+            <td class="col-a-val" spellcheck="false">游戏博物馆、独立之光平台、AWS赋能中心</td>
+            <td class="col-b-val" spellcheck="false">绿洲会所、A7会议中心、万丽五星酒店</td>
+          </tr>
+          <tr>
+            <td class="row-label" spellcheck="false">开业时间</td>
+            <td class="col-a-val" spellcheck="false">2025年（2025年7月23日启幕）</td>
+            <td class="col-b-val" spellcheck="false">2024年（2024年12月28日启幕）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 导师团 ========== -->
+<section id="mentors">
+  <div class="container">
+    <div class="section-header fade-in visible">
+      <div class="eyebrow" spellcheck="false">Mentors</div>
+      <h2 spellcheck="false">顶级导师团队</h2>
+      <p spellcheck="false">汇聚学界、业界、投资界多维度专家，为入驻企业提供持续成长指导</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="mentor-grid fade-in visible">
+      <div class="mentor-card">
+        <div class="mentor-avatar">董</div>
+        <h4 spellcheck="false">董道国</h4>
+        <p spellcheck="false">上海市多媒体行业协会AIGC专委会秘书长</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">丁</div>
+        <h4 spellcheck="false">丁强</h4>
+        <p spellcheck="false">上海沐瞳科技有限公司商务副总裁</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">刘</div>
+        <h4 spellcheck="false">刘博</h4>
+        <p spellcheck="false">上海交通大学设计学院副教授，BiBoBoxStudio创始人</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">章</div>
+        <h4 spellcheck="false">章显</h4>
+        <p spellcheck="false">腾讯云产业生态部华东总经理</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">朱</div>
+        <h4 spellcheck="false">朱利辉</h4>
+        <p spellcheck="false">CIGA中国独立游戏联盟 &amp; WePlay文化展创始人</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">李</div>
+        <h4 spellcheck="false">李彰敏</h4>
+        <p spellcheck="false">韩国风险投资股份有限公司中国代表处首席代表</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">柳</div>
+        <h4 spellcheck="false">柳喆俊</h4>
+        <p spellcheck="false">同济大学设计创意学院副教授，游戏产业研究专家委员</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">朱</div>
+        <h4 spellcheck="false">朱文佳</h4>
+        <p spellcheck="false">华东师范大学传播学院党委书记</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">宋</div>
+        <h4 spellcheck="false">宋缨</h4>
+        <p spellcheck="false">国家知识产权（上海）运营交易服务平台漕河泾工作站主任</p>
+      </div>
+      <div class="mentor-card">
+        <div class="mentor-avatar">岑</div>
+        <h4 spellcheck="false">岑维睿</h4>
+        <p spellcheck="false">出海营销专家</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 标志性活动 ========== -->
+<section id="events">
+  <div class="container">
+    <div class="section-header fade-in visible">
+      <div class="eyebrow" spellcheck="false">Events &amp; Community</div>
+      <h2 spellcheck="false">产业活动 &amp; 开发者社群</h2>
+      <p spellcheck="false">常态化活动体系助力开发者破圈，快速建立产业人脉与资本连接</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="events-grid fade-in visible">
+      <div class="event-card">
+        <!-- 茶叙：咖啡杯 SVG -->
+        <svg class="ev-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--cyber-yellow)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+          <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+          <line x1="6" y1="1" x2="6" y2="4"/>
+          <line x1="10" y1="1" x2="10" y2="4"/>
+          <line x1="14" y1="1" x2="14" y2="4"/>
+        </svg>
+        <h4 spellcheck="false">游人茶叙·行业研讨会</h4>
+        <p spellcheck="false">聚焦独立游戏开发者间深度对话，通过行业前瞻性研讨与创意实践共享，驱动创新生态构建。</p>
+      </div>
+      <div class="event-card">
+        <!-- 大赛：奖杯 SVG -->
+        <svg class="ev-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--cyber-cyan)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="8 21 12 21 16 21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+          <path d="M7 4h10l1 7a5 5 0 0 1-5 5h0a5 5 0 0 1-5-5z"/>
+          <path d="M4 4h3"/>
+          <path d="M17 4h3"/>
+          <path d="M4 4c0 3.3 1.3 5 3 5"/>
+          <path d="M20 4c0 3.3-1.3 5-3 5"/>
+        </svg>
+        <h4 spellcheck="false">中国大学生游戏开发创作大赛</h4>
+        <p spellcheck="false">客观创意展示平台，让对游戏开发有热情的大学生充分发挥创意。持续发掘游戏行业新鲜血液。</p>
+      </div>
+      <div class="event-card">
+        <!-- 技术论坛：CPU/芯片 SVG -->
+        <svg class="ev-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--cyber-purple)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="6" height="6" rx="1"/>
+          <path d="M9 3h6"/>
+          <path d="M9 21h6"/>
+          <path d="M3 9v6"/>
+          <path d="M21 9v6"/>
+          <path d="M12 3v3"/>
+          <path d="M12 18v3"/>
+          <path d="M3 12h3"/>
+          <path d="M18 12h3"/>
+          <rect x="4" y="4" width="16" height="16" rx="2" stroke-opacity="0.4"/>
+        </svg>
+        <h4 spellcheck="false">技术论坛</h4>
+        <p spellcheck="false">联合大厂与服务商举办，聚焦AI大模型、云上数据分析、游戏出海、法律等前沿议题。</p>
+      </div>
+      <div class="event-card">
+        <!-- 路演：折线图上升 SVG -->
+        <svg class="ev-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--cyber-yellow)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"/>
+          <line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+          <line x1="2" y1="20" x2="22" y2="20"/>
+        </svg>
+        <h4 spellcheck="false">动漫游戏投融资路演</h4>
+        <p spellcheck="false">专家指导 + 现场互动，高密度产融对接，助力各阶段初创游戏团队获得投融资机会。</p>
+      </div>
+      <div class="event-card">
+        <!-- 金茶奖：星形奖章 SVG -->
+        <svg class="ev-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--cyber-yellow)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        <h4 spellcheck="false">金茶奖 &amp; 游戏产业年会</h4>
+        <p spellcheck="false">漕河泾标志性年度赛事与行业盛会，吸引全国优质游戏项目参与，提升品牌曝光与行业影响力。</p>
+      </div>
+      <div class="event-card">
+        <!-- GameJam：计时器 SVG -->
+        <svg class="ev-icon-svg" viewBox="0 0 24 24" fill="none" stroke="var(--cyber-magenta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="13" r="8"/>
+          <path d="M12 9v4l2 2"/>
+          <path d="M5 3l-1 2"/>
+          <path d="M19 3l1 2"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+        </svg>
+        <h4 spellcheck="false">48小时 GameJam</h4>
+        <p spellcheck="false">极限创意挑战，开发者在48小时内完成一款游戏原型，是团队快速验证创意与检验协作力的最佳舞台。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 入驻流程 ========== -->
+<section class="process-section" id="process">
+  <div class="container">
+    <div class="section-header fade-in">
+      <div class="eyebrow" spellcheck="false">How to Join</div>
+      <h2 spellcheck="false">入驻流程</h2>
+      <p spellcheck="false">简洁高效的审核机制，最快数周即可完成入驻</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="process-timeline fade-in" id="process-timeline">
+      <!-- 步骤 1 -->
+      <div class="process-step" data-step="0">
+        <div class="process-node">01</div>
+        <h4 spellcheck="false">企业咨询 &amp; 洽谈</h4>
+        <p spellcheck="false">联系我们，了解孵化器空间与服务详情</p>
+      </div>
+      <!-- 连接线 -->
+      <div class="process-connector">
+        <div class="process-connector-line"></div>
+      </div>
+      <!-- 步骤 2 -->
+      <div class="process-step" data-step="1">
+        <div class="process-node">02</div>
+        <h4 spellcheck="false">提交申请材料</h4>
+        <p spellcheck="false">申请表 + 商业计划书 + 营业执照等</p>
+      </div>
+      <!-- 连接线 -->
+      <div class="process-connector">
+        <div class="process-connector-line"></div>
+      </div>
+      <!-- 步骤 3 -->
+      <div class="process-step" data-step="2">
+        <div class="process-node">03</div>
+        <h4 spellcheck="false">趣创团队评审</h4>
+        <p spellcheck="false">专业团队对项目进行评估与审核</p>
+      </div>
+      <!-- 连接线 -->
+      <div class="process-connector">
+        <div class="process-connector-line"></div>
+      </div>
+      <!-- 步骤 4 -->
+      <div class="process-step" data-step="3">
+        <div class="process-node">04</div>
+        <h4 spellcheck="false">签约 &amp; 正式入驻</h4>
+        <p spellcheck="false">签订服务协议，缴费（或免费工位），即刻入驻</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section id="cta">
+  <div class="container">
+    <h2 spellcheck="false">准备好加入了吗？</h2>
+    <p spellcheck="false">立即联系我们，获取专属入驻方案，开启您的游戏创业之旅</p>
+    <div class="cta-contacts">
+      <div class="cta-contact-card">
+        <div class="cc-label" spellcheck="false">漕河泾游戏产业生态&nbsp;联系人</div>
+        <div class="cc-name" spellcheck="false">阮经理</div>
+        <div class="cc-phone" spellcheck="false">189 1839 9513</div>
+        <img class="cc-qrcode" src="qrcode_ruan.png" alt="阮经理微信二维码">
+      </div>
+      <div class="cta-contact-card">
+        <div class="cc-label" spellcheck="false">未来42 · 趣创 联系人</div>
+        <div class="cc-name" spellcheck="false">张经理</div>
+        <div class="cc-phone" spellcheck="false">177 2672 9609</div>
+        <img class="cc-qrcode" src="qrcode_zhang.png" alt="张经理微信二维码">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 页脚 ========== -->
+<footer>
+  <div spellcheck="false"><br></div>
+  <div spellcheck="false">光之希望（徐汇宜山路）× 未来42·趣创（闵行科技绿洲）</div>
+  <div spellcheck="false">© 2025 漕河泾开发区</div>
+</footer>
+
+<!-- ========== 优化增强 JS ========== -->
+<script>
+/* =====================================================
+   1. 入场 stagger 动效
+   ===================================================== */
+(function() {
+  const fadeEls = document.querySelectorAll('.fade-in');
+  // 移除 HTML 里预加的 visible，让 IO 来触发
+  fadeEls.forEach(el => el.classList.remove('visible'));
+
+  // 按 section 分组，section 内各元素 stagger 0.1s
+  const sections = document.querySelectorAll('section');
+  sections.forEach(sec => {
+    const items = Array.from(sec.querySelectorAll('.fade-in'));
+    items.forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.1).toFixed(1) + 's';
+    });
+  });
+  // 不在 section 内的 fade-in（header、nav等）
+  fadeEls.forEach(el => {
+    if (!el.closest('section')) el.style.transitionDelay = '0s';
+  });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  fadeEls.forEach(el => io.observe(el));
+})();
+
+/* =====================================================
+   2. Hero 数字计数动画
+   ===================================================== */
+(function() {
+  const statData = [
+    { target: 60,   suffix: '+',   duration: 1800 },
+    { target: 40,   suffix: '年',  duration: 1800 },
+    { target: 1558, suffix: '亿',  duration: 2000 },
+    { target: 2,    suffix: '万+', duration: 1500 },
+  ];
+  const numEls = document.querySelectorAll('.hero-stat .num');
+  if (!numEls.length) return;
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function animateNum(el, target, suffix, duration) {
+    const startTime = performance.now();
+    function tick(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.round(easeOut(progress) * target);
+      el.innerHTML = current + '<em>' + suffix + '</em>';
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.innerHTML = target + '<em>' + suffix + '</em>';
+        el.classList.add('counted');
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+
+  let started = false;
+  const heroIo = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      numEls.forEach((el, i) => {
+        const d = statData[i];
+        if (d) {
+          setTimeout(() => animateNum(el, d.target, d.suffix, d.duration), i * 150);
+        }
+      });
+      heroIo.disconnect();
+    }
+  }, { threshold: 0.5 });
+
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) heroIo.observe(heroSection);
+})();
+
+/* =====================================================
+   3. 导航栏：滚动透明→实体 + 当前 section 高亮
+   ===================================================== */
+(function() {
+  const nav = document.getElementById('main-nav');
+  if (!nav) return;
+
+  // 滚动切换 scrolled 状态
+  function updateScrolled() {
+    if (window.scrollY > 80) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', updateScrolled, { passive: true });
+  updateScrolled();
+
+  // Intersection Observer 高亮当前 section
+  const navLinks = document.querySelectorAll('#nav-links a[href^="#"]');
+  const sidebarLinks = document.querySelectorAll('.sidebar-link[href^="#"]');
+  const sectionIds = Array.from(navLinks).map(a => a.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  let activeSectionId = null;
+  const secIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        activeSectionId = entry.target.id;
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + activeSectionId);
+        });
+        sidebarLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + activeSectionId);
+        });
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-60px 0px -40% 0px' });
+
+  sections.forEach(sec => secIo.observe(sec));
+})();
+
+/* =====================================================
+   4. 移动端汉堡菜单
+   ===================================================== */
+(function() {
+  const btn = document.getElementById('nav-hamburger');
+  const overlay = document.getElementById('nav-overlay');
+  const sidebar = document.getElementById('nav-sidebar');
+  if (!btn || !overlay || !sidebar) return;
+
+  function openMenu() {
+    btn.classList.add('open');
+    overlay.style.display = 'block';
+    sidebar.classList.add('open');
+    requestAnimationFrame(() => overlay.classList.add('visible'));
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    btn.classList.remove('open');
+    overlay.classList.remove('visible');
+    sidebar.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => { overlay.style.display = 'none'; }, 320);
+  }
+
+  btn.addEventListener('click', () => {
+    sidebar.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  overlay.addEventListener('click', closeMenu);
+
+  // 点击侧边栏链接后关闭菜单
+  sidebar.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+})();
+
+/* =====================================================
+   5-extra. 入驻流程节点 stagger 点亮
+   ===================================================== */
+(function() {
+  const timeline = document.getElementById('process-timeline');
+  if (!timeline) return;
+  const steps = timeline.querySelectorAll('.process-step');
+  if (!steps.length) return;
+
+  let triggered = false;
+  const io = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !triggered) {
+      triggered = true;
+      steps.forEach((step, i) => {
+        setTimeout(() => {
+          step.classList.add('lit');
+        }, i * 280);
+      });
+      io.disconnect();
+    }
+  }, { threshold: 0.2 });
+  io.observe(timeline);
+})();
+
+/* =====================================================
+   5. Hero Canvas 粒子系统（≤50粒子，30fps限制）
+   ===================================================== */
+(function() {
+  const canvas = document.getElementById('hero-particles');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const MAX_PARTICLES = 48;
+  const LINK_DISTANCE = 120;
+  const FPS_LIMIT = 30;
+  const FRAME_INTERVAL = 1000 / FPS_LIMIT;
+
+  let W, H, particles = [], lastTime = 0;
+
+  function resize() {
+    const hero = canvas.parentElement;
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : (Math.random() > 0.5 ? -5 : H + 5);
+      const speed = 0.3 + Math.random() * 0.5;
+      const angle = Math.random() * Math.PI * 2;
+      this.vx = Math.cos(angle) * speed;
+      this.vy = Math.sin(angle) * speed * 0.7;
+      this.r = 1.2 + Math.random() * 1.8;
+      this.alpha = 0.4 + Math.random() * 0.5;
+      this.alphaDir = Math.random() > 0.5 ? 1 : -1;
+      this.alphaSpeed = 0.004 + Math.random() * 0.006;
+    }
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      this.alpha += this.alphaDir * this.alphaSpeed;
+      if (this.alpha > 0.9 || this.alpha < 0.15) this.alphaDir *= -1;
+      if (this.x < -10 || this.x > W + 10 || this.y < -10 || this.y > H + 10) this.reset(false);
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(252,227,0,${this.alpha})`;
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < MAX_PARTICLES; i++) particles.push(new Particle());
+  }
+
+  function drawLinks() {
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < LINK_DISTANCE) {
+          const alpha = (1 - dist / LINK_DISTANCE) * 0.25;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(252,227,0,${alpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  function loop(now) {
+    requestAnimationFrame(loop);
+    if (now - lastTime < FRAME_INTERVAL) return;
+    lastTime = now;
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawLinks();
+  }
+
+  resize();
+  initParticles();
+  window.addEventListener('resize', () => { resize(); initParticles(); }, { passive: true });
+  requestAnimationFrame(loop);
+})();
+
+/* =====================================================
+   6. Hero 视差滚动（移动端禁用）
+   ===================================================== */
+(function() {
+  // 检测移动端
+  const isMobile = window.matchMedia('(hover: none), (max-width: 800px)').matches;
+  if (isMobile) return;
+
+  const heroBg = document.getElementById('hero-parallax-bg');
+  const heroCanvas = document.getElementById('hero-particles');
+  if (!heroBg) return;
+
+  let ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const offset = Math.min(scrollY * 0.35, 100);
+        heroBg.style.transform = `translateY(${offset}px)`;
+        if (heroCanvas) heroCanvas.style.transform = `translateY(${offset * 0.5}px)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* =====================================================
+   7. 安全防护：禁用右键 + 开发者工具快捷键
+   ===================================================== */
+(function() {
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('keydown', e => {
+    // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    if (
+      e.key === 'F12' ||
+      (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+      (e.ctrlKey && e.key === 'u')
+    ) {
+      e.preventDefault();
+    }
+  });
+})();
+</script>
+
+<!-- ========== 可视化编辑器样式 ========== -->
+<style>
+  /* 编辑模式工具栏 */
+  #editor-toolbar {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(15, 20, 40, 0.96);
+    border: 1px solid rgba(0, 180, 216, 0.4);
+    border-radius: 40px;
+    padding: 10px 20px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 1px rgba(0,180,216,0.1);
+    transition: all 0.3s ease;
+    user-select: none;
+  }
+
+  #editor-toolbar .tb-label {
+    font-size: 11px;
+    color: rgba(0,180,216,0.7);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding-right: 8px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    margin-right: 4px;
+    white-space: nowrap;
+  }
+
+  #editor-toolbar button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    border-radius: 24px;
+    border: 1px solid transparent;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+
+  #btn-toggle-edit {
+    background: rgba(0, 180, 216, 0.15);
+    color: #00b4d8;
+    border-color: rgba(0, 180, 216, 0.3);
+  }
+  #btn-toggle-edit:hover, #btn-toggle-edit.active {
+    background: #00b4d8;
+    color: #0d1117;
+    border-color: #00b4d8;
+  }
+  #btn-toggle-edit.active {
+    animation: edit-pulse 2s ease-in-out infinite;
+  }
+  @keyframes edit-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,180,216,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(0,180,216,0); }
+  }
+
+  #btn-add-img {
+    background: rgba(6, 214, 160, 0.12);
+    color: #06d6a0;
+    border-color: rgba(6, 214, 160, 0.3);
+  }
+  #btn-add-img:hover {
+    background: rgba(6, 214, 160, 0.25);
+    border-color: rgba(6, 214, 160, 0.6);
+  }
+
+  #btn-save {
+    background: rgba(244, 164, 35, 0.12);
+    color: #f4a423;
+    border-color: rgba(244, 164, 35, 0.3);
+  }
+  #btn-save:hover {
+    background: rgba(244, 164, 35, 0.25);
+    border-color: rgba(244, 164, 35, 0.6);
+  }
+
+  #btn-export {
+    background: rgba(123, 47, 247, 0.12);
+    color: #b48aff;
+    border-color: rgba(123, 47, 247, 0.3);
+  }
+  #btn-export:hover {
+    background: rgba(123, 47, 247, 0.25);
+    border-color: rgba(123, 47, 247, 0.6);
+  }
+
+  #tb-status {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    padding-left: 8px;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    margin-left: 4px;
+    min-width: 60px;
+  }
+
+  /* 编辑模式高亮 */
+  body.edit-mode [contenteditable="true"] {
+    outline: none;
+    border-radius: 4px;
+    transition: background 0.2s, box-shadow 0.2s;
+    cursor: text;
+    position: relative;
+  }
+  body.edit-mode [contenteditable="true"]:hover {
+    background: rgba(0, 180, 216, 0.08) !important;
+    box-shadow: 0 0 0 2px rgba(0,180,216,0.3);
+  }
+  body.edit-mode [contenteditable="true"]:focus {
+    background: rgba(0, 180, 216, 0.12) !important;
+    box-shadow: 0 0 0 2px rgba(0,180,216,0.6);
+  }
+
+  /* 编辑模式边框提示 */
+  body.edit-mode {
+    outline: 3px solid rgba(0,180,216,0.2);
+    outline-offset: -3px;
+  }
+
+  /* 图片插入区域 */
+  .img-drop-zone {
+    border: 2px dashed rgba(6,214,160,0.4);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin: 16px 0;
+    background: rgba(6,214,160,0.04);
+    position: relative;
+  }
+  .img-drop-zone:hover {
+    border-color: rgba(6,214,160,0.7);
+    background: rgba(6,214,160,0.08);
+  }
+  .img-drop-zone.drag-over {
+    border-color: #06d6a0;
+    background: rgba(6,214,160,0.14);
+    transform: scale(1.01);
+  }
+  .img-drop-zone p {
+    color: rgba(6,214,160,0.7);
+    font-size: 13px;
+    margin: 0;
+  }
+  .img-drop-zone .dz-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  /* 插入的图片 */
+  .inserted-img-wrap {
+    position: relative;
+    display: inline-block;
+    margin: 12px 0;
+    max-width: 100%;
+  }
+  .inserted-img-wrap img {
+    max-width: 100%;
+    border-radius: 10px;
+    display: block;
+    border: 2px solid rgba(255,255,255,0.08);
+  }
+  .inserted-img-wrap .img-controls {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: none;
+    gap: 4px;
+  }
+  .inserted-img-wrap:hover .img-controls {
+    display: flex;
+  }
+  .inserted-img-wrap .img-controls button {
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: -apple-system, "PingFang SC", sans-serif;
+  }
+  .inserted-img-wrap .img-del { background: rgba(220,50,50,0.9); color: #fff; }
+  .inserted-img-wrap .img-resize { background: rgba(0,0,0,0.7); color: #fff; }
+
+  /* 图片插入面板 */
+  #img-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.96);
+    z-index: 99999;
+    background: #111827;
+    border: 1px solid rgba(0,180,216,0.35);
+    border-radius: 20px;
+    padding: 32px;
+    width: 480px;
+    max-width: 90vw;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.8);
+    display: none;
+    opacity: 0;
+    transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  #img-panel.open {
+    display: block;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  #img-panel h3 {
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #img-panel-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 99998;
+    display: none;
+    backdrop-filter: blur(4px);
+  }
+  #img-panel-overlay.open { display: block; }
+
+  #img-panel .panel-section {
+    margin-bottom: 20px;
+  }
+  #img-panel .panel-section label {
+    display: block;
+    font-size: 12px;
+    color: rgba(155,165,184,0.8);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  #img-panel input[type="text"], #img-panel input[type="url"] {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #e8eaf0;
+    font-size: 13px;
+    outline: none;
+    font-family: -apple-system, "PingFang SC", sans-serif;
+    box-sizing: border-box;
+  }
+  #img-panel input:focus {
+    border-color: rgba(0,180,216,0.5);
+    background: rgba(0,180,216,0.06);
+  }
+  #img-panel .panel-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 24px;
+  }
+  #img-panel .panel-btns button {
+    padding: 9px 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: -apple-system, "PingFang SC", sans-serif;
+  }
+  #img-panel .btn-cancel { background: rgba(255,255,255,0.08); color: #9ba5b8; }
+  #img-panel .btn-insert { background: #00b4d8; color: #0d1117; }
+  #img-panel .btn-insert:hover { background: #00caf0; }
+
+  /* 图片位置选择 */
+  #img-panel .position-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  #img-panel .position-selector button {
+    padding: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    color: #9ba5b8;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: -apple-system, "PingFang SC", sans-serif;
+  }
+  #img-panel .position-selector button.selected,
+  #img-panel .position-selector button:hover {
+    background: rgba(0,180,216,0.15);
+    border-color: rgba(0,180,216,0.4);
+    color: #00b4d8;
+  }
+
+  /* 保存成功提示 */
+  #save-toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: rgba(6,214,160,0.95);
+    color: #0d1117;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 99999;
+    white-space: nowrap;
+  }
+  #save-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* 编辑提示横幅 */
+  #edit-banner {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,180,216,0.12);
+    border: 1px solid rgba(0,180,216,0.3);
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 12px;
+    color: rgba(0,180,216,0.9);
+    z-index: 9998;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+    white-space: nowrap;
+    backdrop-filter: blur(8px);
+  }
+  body.edit-mode #edit-banner { display: block; }
+</style>
+
+<!-- ========== 编辑器 HTML 结构 ========== -->
+<!-- 工具栏 -->
+<div id="editor-toolbar" style="display: none;">
+  <span class="tb-label">✦ 编辑器</span>
+  <button id="btn-toggle-edit" onclick="toggleEdit()" class="">✏️ 开启编辑</button>
+  <button id="btn-add-img" onclick="openImgPanel()">🖼️ 插入图片</button>
+  <button id="btn-save" onclick="saveToFile()">💾 导出 HTML</button>
+  <span id="tb-status" style="">查看模式</span>
+</div>
+
+<!-- 编辑提示 -->
+<div id="edit-banner" style="display: none;">✏️ 编辑模式已开启 — 点击任意文字即可直接修改</div>
+
+<!-- 图片插入面板遮罩 -->
+<div id="img-panel-overlay" onclick="closeImgPanel()"></div>
+
+<!-- 图片插入面板 -->
+<div id="img-panel">
+  <h3>🖼️ 插入图片</h3>
+
+  <div class="panel-section">
+    <label>从本地上传</label>
+    <div class="img-drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">
+      <span class="dz-icon">📁</span>
+      <p>点击选择图片 或 拖放到此处<br><small style="opacity:0.6;">支持 JPG、PNG、GIF、WebP、SVG</small></p>
+    </div>
+    <input type="file" id="file-input" accept="image/*" style="display:none" onchange="onFileSelect(event)">
+  </div>
+
+  <div class="panel-section">
+    <label>或输入图片网址（URL）</label>
+    <input type="url" id="img-url-input" placeholder="https://example.com/image.jpg">
+  </div>
+
+  <div class="panel-section">
+    <label>图片宽度（留空 = 100%）</label>
+    <input type="text" id="img-width-input" placeholder="例：400px 或 60%">
+  </div>
+
+  <div class="panel-section">
+    <label>插入位置</label>
+    <div class="position-selector" id="position-selector">
+      <button class="selected" data-pos="hero-inner" onclick="selectPos(this)">封面区域</button>
+      <button data-pos="background" onclick="selectPos(this)">市场背景</button>
+      <button data-pos="incubators" onclick="selectPos(this)">双孵化器</button>
+      <button data-pos="ecosystem" onclick="selectPos(this)">产业生态</button>
+      <button data-pos="services" onclick="selectPos(this)">服务体系</button>
+      <button data-pos="mentors" onclick="selectPos(this)">导师团队</button>
+      <button data-pos="events" onclick="selectPos(this)">活动社群</button>
+      <button data-pos="cta" onclick="selectPos(this)">联系我们</button>
+      <button data-pos="cursor" onclick="selectPos(this)">光标处</button>
+    </div>
+  </div>
+
+  <div id="img-preview-wrap" style="display:none; margin: 12px 0;">
+    <img id="img-preview" style="max-width:100%; max-height:160px; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+  </div>
+
+  <div class="panel-btns">
+    <button class="btn-cancel" onclick="closeImgPanel()">取消</button>
+    <button class="btn-insert" onclick="insertImage()">插入图片</button>
+  </div>
+</div>
+
+<!-- 保存提示 -->
+<div id="save-toast" class="" style="background: rgb(0, 180, 216); color: rgb(0, 180, 216); border: 1px solid rgba(0, 180, 216, 0.3); display: none;">✏️ 点击任意文字开始编辑</div>
+
+<!-- ========== 编辑器 JavaScript ========== -->
+<script>
+(function() {
+  'use strict';
+
+  let editMode = false;
+  let pendingImgSrc = null;
+  let selectedPos = 'hero-inner';
+  let lastSelection = null;
+
+  // ─── 编辑模式开关 ─────────────────────────────
+  window.toggleEdit = function() {
+    editMode = !editMode;
+    document.body.classList.toggle('edit-mode', editMode);
+    const btn = document.getElementById('btn-toggle-edit');
+    const status = document.getElementById('tb-status');
+    if (editMode) {
+      btn.textContent = '🔒 关闭编辑';
+      btn.classList.add('active');
+      status.textContent = '编辑中...';
+      status.style.color = '#00b4d8';
+      enableEditing();
+    } else {
+      btn.textContent = '✏️ 开启编辑';
+      btn.classList.remove('active');
+      status.textContent = '查看模式';
+      status.style.color = '';
+      disableEditing();
+    }
+  };
+
+  function enableEditing() {
+    // 让所有文字元素可编辑
+    const selectors = [
+      'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+      'p', 'li', 'span.num', 'div.label',
+      '.hero-tag', '.eyebrow', '.sub',
+      '.val', '.key', '.cc-name', '.cc-phone', '.cc-label',
+      '.brand-tag', '.tag', 'th', 'td',
+      '.big', 'footer div', 'nav .logo',
+      '.cb-text h4', '.cb-text p',
+      '.meta-item .val', '.meta-item .key',
+      '.mentor-card h4', '.mentor-card p'
+    ];
+    selectors.forEach(sel => {
+      document.querySelectorAll(sel).forEach(el => {
+        // 跳过工具栏本身
+        if (el.closest('#editor-toolbar') || el.closest('#img-panel')) return;
+        el.setAttribute('contenteditable', 'true');
+        el.setAttribute('spellcheck', 'false');
+      });
+    });
+
+    // 记录光标位置（用于"光标处"插入）
+    document.addEventListener('selectionchange', trackSelection);
+    showToast('✏️ 点击任意文字开始编辑', 2000, '#00b4d8');
+  }
+
+  function disableEditing() {
+    document.querySelectorAll('[contenteditable="true"]').forEach(el => {
+      el.removeAttribute('contenteditable');
+    });
+    document.removeEventListener('selectionchange', trackSelection);
+  }
+
+  function trackSelection() {
+    const sel = window.getSelection();
+    if (sel && sel.rangeCount > 0) {
+      const range = sel.getRangeAt(0);
+      if (!range.startContainer.parentElement.closest('#editor-toolbar') &&
+          !range.startContainer.parentElement.closest('#img-panel')) {
+        lastSelection = range.cloneRange();
+      }
+    }
+  }
+
+  // ─── 图片面板 ─────────────────────────────────
+  window.openImgPanel = function() {
+    document.getElementById('img-panel').classList.add('open');
+    document.getElementById('img-panel-overlay').classList.add('open');
+    // 重置
+    pendingImgSrc = null;
+    document.getElementById('img-url-input').value = '';
+    document.getElementById('img-width-input').value = '';
+    document.getElementById('img-preview-wrap').style.display = 'none';
+    document.getElementById('drop-zone').innerHTML = `
+      <span class="dz-icon">📁</span>
+      <p>点击选择图片 或 拖放到此处<br><small style="opacity:0.6;">支持 JPG、PNG、GIF、WebP、SVG</small></p>`;
+  };
+
+  window.closeImgPanel = function() {
+    document.getElementById('img-panel').classList.remove('open');
+    document.getElementById('img-panel-overlay').classList.remove('open');
+  };
+
+  window.selectPos = function(btn) {
+    document.querySelectorAll('#position-selector button').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedPos = btn.getAttribute('data-pos');
+  };
+
+  // 拖放处理
+  window.onDragOver = function(e) {
+    e.preventDefault();
+    document.getElementById('drop-zone').classList.add('drag-over');
+  };
+  window.onDragLeave = function(e) {
+    document.getElementById('drop-zone').classList.remove('drag-over');
+  };
+  window.onDrop = function(e) {
+    e.preventDefault();
+    document.getElementById('drop-zone').classList.remove('drag-over');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) loadFile(file);
+  };
+  window.onFileSelect = function(e) {
+    const file = e.target.files[0];
+    if (file) loadFile(file);
+  };
+
+  function loadFile(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      pendingImgSrc = e.target.result;
+      showImgPreview(pendingImgSrc, file.name);
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function showImgPreview(src, name) {
+    document.getElementById('img-preview').src = src;
+    document.getElementById('img-preview-wrap').style.display = 'block';
+    const dz = document.getElementById('drop-zone');
+    dz.innerHTML = `<span style="color:#06d6a0;font-size:12px;">✅ 已选择: ${name || '图片'}</span>`;
+  }
+
+  // URL 预览
+  document.addEventListener('DOMContentLoaded', function() {});
+  window.addEventListener('load', function() {
+    const urlInput = document.getElementById('img-url-input');
+    if (urlInput) {
+      urlInput.addEventListener('blur', function() {
+        if (urlInput.value.trim()) {
+          pendingImgSrc = urlInput.value.trim();
+          showImgPreview(pendingImgSrc, '网络图片');
+        }
+      });
+    }
+  });
+
+  // ─── 插入图片 ─────────────────────────────────
+  window.insertImage = function() {
+    // 优先用URL输入框
+    const urlVal = document.getElementById('img-url-input').value.trim();
+    const src = urlVal || pendingImgSrc;
+    if (!src) { alert('请先选择图片或输入图片网址'); return; }
+
+    const width = document.getElementById('img-width-input').value.trim() || '100%';
+
+    const wrap = document.createElement('div');
+    wrap.className = 'inserted-img-wrap';
+    wrap.style.width = width === '100%' ? '100%' : 'auto';
+    wrap.innerHTML = `
+      <img src="${src}" style="width:${width}; max-width:100%;" alt="插入的图片">
+      <div class="img-controls">
+        <button class="img-resize" onclick="resizeImg(this)" title="调整大小">⇲ 调整</button>
+        <button class="img-del" onclick="this.closest('.inserted-img-wrap').remove()" title="删除">✕ 删除</button>
+      </div>`;
+
+    let inserted = false;
+
+    if (selectedPos === 'cursor' && lastSelection) {
+      try {
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(lastSelection);
+        const range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(wrap);
+        inserted = true;
+      } catch(e) {}
+    }
+
+    if (!inserted) {
+      let target = document.getElementById(selectedPos);
+      if (!target) target = document.querySelector('.' + selectedPos);
+      if (!target) target = document.querySelector('#hero-inner') || document.querySelector('.hero-inner');
+      if (target) {
+        const container = target.querySelector('.container') || target;
+        container.appendChild(wrap);
+        inserted = true;
+      }
+    }
+
+    if (inserted) {
+      closeImgPanel();
+      wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      showToast('✅ 图片已插入！可拖动调整位置', 2500, '#06d6a0');
+    } else {
+      alert('找不到目标区域，请换一个插入位置');
+    }
+  };
+
+  // 调整图片大小
+  window.resizeImg = function(btn) {
+    const img = btn.closest('.inserted-img-wrap').querySelector('img');
+    const input = prompt('输入新的宽度（例：300px 或 50%）：', img.style.width || '100%');
+    if (input) {
+      img.style.width = input;
+      img.closest('.inserted-img-wrap').style.width = input.includes('%') ? '100%' : 'auto';
+    }
+  };
+
+  // ─── 导出 HTML ────────────────────────────────
+  window.saveToFile = function() {
+    // 临时关闭编辑模式以获得干净的HTML
+    const wasEditing = editMode;
+    if (wasEditing) {
+      document.body.classList.remove('edit-mode');
+      document.querySelectorAll('[contenteditable]').forEach(el => {
+        el.removeAttribute('contenteditable');
+        el.removeAttribute('spellcheck');
+      });
+    }
+
+    // 隐藏工具栏
+    document.getElementById('editor-toolbar').style.display = 'none';
+    document.getElementById('edit-banner').style.display = 'none';
+    document.getElementById('save-toast').style.display = 'none';
+
+    // 获取完整HTML
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+    // 恢复工具栏
+    document.getElementById('editor-toolbar').style.display = '';
+    document.getElementById('save-toast').style.display = '';
+    if (wasEditing) {
+      document.body.classList.add('edit-mode');
+      enableEditing();
+    }
+
+    // 下载
+    const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '漕河泾游戏孵化器介绍_' + new Date().toISOString().slice(0,10) + '.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+
+    showToast('✅ 文件已下载到本地！', 3000, '#06d6a0');
+  };
+
+  // ─── Toast 提示 ───────────────────────────────
+  function showToast(msg, duration, color) {
+    const toast = document.getElementById('save-toast');
+    toast.textContent = msg;
+    toast.style.background = color || 'rgba(6,214,160,0.95)';
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), duration || 2500);
+  }
+
+  // ─── 键盘快捷键 ──────────────────────────────
+  document.addEventListener('keydown', function(e) {
+    // Ctrl+E 或 Cmd+E 切换编辑
+    if ((e.ctrlKey || e.metaKey) && e.key === 'e') {
+      e.preventDefault();
+      toggleEdit();
+    }
+    // Ctrl+S 导出
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+      saveToFile();
+    }
+    // Esc 关闭图片面板
+    if (e.key === 'Escape') {
+      closeImgPanel();
+    }
+  });
+
+  // ─── 初始化提示 ──────────────────────────────
+  setTimeout(() => {
+    showToast('💡 底部工具栏：开启编辑 / 插入图片 / 导出HTML', 4000, 'rgba(15,31,61,0.97)');
+    document.getElementById('save-toast').style.color = '#00b4d8';
+    document.getElementById('save-toast').style.border = '1px solid rgba(0,180,216,0.3)';
+  }, 1200);
+
+})();
+</script>
+
+
+
+
+</body></html>
